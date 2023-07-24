@@ -1,0 +1,28 @@
+{% extends "home.html" %}
+
+{% block content %}      
+
+<div style="box-sizing: border-box; padding: 10px;">
+    <h2>Question: {{question}}</h3>
+    The Answers are as follows:
+    <ol>
+        {% for answer in answers %}
+            <div>
+                <form method="POST" action="/questions/like-answer/{{ answer.id }}/">
+                {% csrf_token %}
+                <li> {{ answer.answer }} ({{answer.like_count}} people have liked this answer)</li>
+                <button type="submit" class="btn btn-light">Like</button>
+                </form>
+            </div>
+        {% endfor %}
+    </ol> 
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group" style="box-sizing: border-box; padding: 45px 8px">
+            {{ form }}
+            <small class="form-text text-muted">Please write the answers which are not already there!</small>
+            <button type="submit" style="margin-top: 10px"class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

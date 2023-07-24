@@ -1,0 +1,14 @@
+{% extends "home.html" %}
+
+{% block content %}      
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group" style="box-sizing: border-box; padding: 50px">
+      {{ form }}
+      <small id="emailHelp" class="form-text text-muted">Please explain your question in such a way that the community can understand it easily!</small>
+      <button type="submit" style="margin-top: 10px"class="btn btn-primary">Submit</button>
+    </div> 
+</form>
+
+{% endblock %}
